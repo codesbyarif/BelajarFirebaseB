@@ -1,40 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8dp"
     android:orientation="vertical"
     tools:context=".UpdateData">
 
-    <EditText
-        android:id="@+id/new_nim"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="NIM Baru"
-        android:inputType="textPersonName" />
+        android:layout_height="56dp"
+        android:background="#f5f5f5"
+        android:elevation="4dp">
 
-    <EditText
-        android:id="@+id/new_nama"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nama Baru"
-        android:inputType="textPersonName" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Update Data"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+    </RelativeLayout>
 
-    <EditText
-        android:id="@+id/new_jurusan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Jurusan Baru"
-        android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/update"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update" />
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp">
+
+
+        <EditText
+            android:id="@+id/new_nim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="NIM Baru"
+            android:inputType="number"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/new_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nama Baru"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/new_jurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Jurusan Baru"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/new_jenis_kelamin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Jenis Kelamin Baru"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/new_alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Alamat Baru"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="#d6d8d7"
+            app:cornerRadius="6dp"
+            android:text="Update"
+            android:textColor="#0e0e0e"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

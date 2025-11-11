@@ -55,24 +55,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val getNIM: String = binding.nim.getText().toString()
                 val getNama: String = binding.nama.getText().toString()
                 val getJurusan: String = binding.jurusan.getText().toString()
+                val getJenisKelamin: String = binding.jenisKelamin.getText().toString()
+                val getAlamat: String = binding.alamat.getText().toString()
 
                 // Mendapatkan Referensi dari Database
                 val getReference: DatabaseReference
                 getReference = database.reference
 
                 // Mengecek apakah ada data yang kosong
-                if (isEmpty(getNIM) || isEmpty(getNama) || isEmpty(getJurusan)) {
+                if (isEmpty(getNIM) || isEmpty(getNama) || isEmpty(getJurusan) || isEmpty(getJenisKelamin) || isEmpty(getAlamat)) {
                     //Jika Ada, maka akan menampilkan pesan singkan seperti berikut ini.
                     Toast.makeText(this@MainActivity, "Data tidak boleh ada yang kosong", Toast.LENGTH_SHORT).show()
                 } else {
                     /* Jika Tidak, maka data dapat diproses dan meyimpannya pada Database        Menyimpan data referensi pada Database berdasarkan User ID dari masing-masing Akun
                     */
                     getReference.child("Admin").child(getUserID).child("Mahasiswa").push()
-                        .setValue(data_mahasiswa(getNIM, getNama, getJurusan))
+                        .setValue(data_mahasiswa(getNIM, getNama, getJurusan, getJenisKelamin, getAlamat))
                         .addOnCompleteListener(this) { //Peristiwa ini terjadi saat user berhasil menyimpan datanya kedalam Database
                             binding.nim.setText("")
                             binding.nama.setText("")
                             binding.jurusan.setText("")
+                            binding.jenisKelamin.setText("")
+                            binding.alamat.setText("")
                             Toast.makeText(this@MainActivity, "Data Tersimpan", Toast.LENGTH_SHORT).show()
                         }
                 }

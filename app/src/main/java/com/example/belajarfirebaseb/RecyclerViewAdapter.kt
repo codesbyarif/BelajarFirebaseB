@@ -22,6 +22,8 @@ class RecyclerViewAdapter(
         val NIM: TextView = itemView.findViewById(R.id.nimx)
         val Nama: TextView = itemView.findViewById(R.id.namax)
         val Jurusan: TextView = itemView.findViewById(R.id.jurusanx)
+        val JenisKelamin: TextView = itemView.findViewById(R.id.jenis_kelaminx)
+        val Alamat: TextView = itemView.findViewById(R.id.alamatx)
         val ListItem: LinearLayout = itemView.findViewById(R.id.list_item)
     }
 
@@ -42,11 +44,18 @@ class RecyclerViewAdapter(
         val nim = mahasiswa.nim
         val nama = mahasiswa.nama
         val jurusan = mahasiswa.jurusan
+        val jenisKelamin = mahasiswa.jenis_kelamin
+        val alamat = mahasiswa.alamat
 
-        // Memasukan Nilai/Value kedalam View (TextView: NIM, Nama, Jurusan)
+
+
+
+
         holder.NIM.text = "NIM: $nim"
         holder.Nama.text = "Nama: $nama"
         holder.Jurusan.text = "Jurusan: $jurusan"
+        holder.JenisKelamin.text = "Jenis Kelamin: $jenisKelamin" // <-- PERBAIKAN 1
+        holder.Alamat.text = "Alamat: $alamat"           // <-- PERBAIKAN 2
 
         // Set OnLongClickListener untuk menampilkan dialog Update/Delete
         holder.ListItem.setOnLongClickListener { view ->
@@ -55,18 +64,20 @@ class RecyclerViewAdapter(
             alert.setItems(action) { dialog, i ->
                 when (i) {
                     0 -> {
-                        /* Berpindah Activity pada halaman layout updateData dan mengambil data pada listMahasiswa, berdasarkan posisinya untuk dikirim pada activity selanjutnya */
+
                         val bundle = Bundle()
                         bundle.putString("dataNIM", listMahasiswa[position].nim)
                         bundle.putString("dataNama", listMahasiswa[position].nama)
                         bundle.putString("dataJurusan", listMahasiswa[position].jurusan)
+                        bundle.putString("dataJenisKelamin", listMahasiswa[position].jenis_kelamin)
+                        bundle.putString("dataAlamat", listMahasiswa[position].alamat)
                         bundle.putString("getPrimaryKey", listMahasiswa[position].key)
                         val intent = Intent(view.context, UpdateData::class.java)
                         intent.putExtras(bundle)
                         context.startActivity(intent)
                     }
                     1 -> {
-                        // Menggunakan interface untuk mengirim data mahasiswa yang akan dihapus
+
                         listener?.onDeleteData(listMahasiswa[position], position)
                     }
                 }
@@ -78,7 +89,7 @@ class RecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int {
-        // Menghitung Ukuran/Jumlah Data Yang Akan Ditampilkan Pada RecyclerView
+
         return listMahasiswa.size
     }
 

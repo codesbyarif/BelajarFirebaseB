@@ -17,6 +17,8 @@ class UpdateData : AppCompatActivity() {
     private var cekNIM: String? = null
     private var cekNama: String? = null
     private var cekJurusan: String? = null
+    private var cekJenisKelamin: String? = null
+    private var cekAlamat: String? = null
     private lateinit var binding: ActivityUpdateDataBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +47,11 @@ class UpdateData : AppCompatActivity() {
             cekNIM = binding.newNim.text.toString()
             cekNama = binding.newNama.text.toString()
             cekJurusan = binding.newJurusan.text.toString()
+            cekJenisKelamin = binding.newJenisKelamin.text.toString()
+            cekAlamat = binding.newAlamat.text.toString()
 
             //Mengecek agar tidak ada data yang kosong, saat proses update
-            if (isEmpty(cekNIM!!) || isEmpty(cekNama!!) || isEmpty(cekJurusan!!)) {
+            if (isEmpty(cekNIM!!) || isEmpty(cekNama!!) || isEmpty(cekJurusan!!) || isEmpty(cekJenisKelamin!!) || isEmpty(cekAlamat!!)) {
                 Toast.makeText(
                     this@UpdateData,
                     "Data tidak boleh ada yang kosong",
@@ -60,6 +64,8 @@ class UpdateData : AppCompatActivity() {
                 setMahasiswa.nim = binding.newNim.text.toString()
                 setMahasiswa.nama = binding.newNama.text.toString()
                 setMahasiswa.jurusan = binding.newJurusan.text.toString()
+                setMahasiswa.jenis_kelamin = binding.newJenisKelamin.text.toString()
+                setMahasiswa.alamat = binding.newAlamat.text.toString()
                 updateMahasiswa(setMahasiswa)
             }
         }
@@ -77,10 +83,14 @@ class UpdateData : AppCompatActivity() {
             val getNIM = intent.extras?.getString("dataNIM") ?: ""
             val getNama = intent.extras?.getString("dataNama") ?: ""
             val getJurusan = intent.extras?.getString("dataJurusan") ?: ""
+            val getJenisKelamin = intent.extras?.getString("dataJenisKelamin") ?: ""
+            val getAlamat = intent.extras?.getString("dataAlamat") ?: ""
 
             binding.newNim.setText(getNIM)
             binding.newNama.setText(getNama)
             binding.newJurusan.setText(getJurusan)
+            binding.newJenisKelamin.setText(getJenisKelamin)
+            binding.newAlamat.setText(getAlamat)
         }
 
     //Proses Update data yang sudah ditentukan
@@ -108,6 +118,8 @@ class UpdateData : AppCompatActivity() {
                 binding.newNim.setText("")
                 binding.newNama.setText("")
                 binding.newJurusan.setText("")
+                binding.newJenisKelamin.setText("")
+                binding.newAlamat.setText("")
                 Toast.makeText(this@UpdateData, "Data Berhasil diubah", Toast.LENGTH_SHORT).show()
                 finish()
             }
